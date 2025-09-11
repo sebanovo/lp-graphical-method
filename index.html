@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Programación Lineal - Método Gráfico</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Plotly CDN -->
+    <script src="https://cdn.plot.ly/plotly-2.29.1.min.js"></script>
+    <link rel="icon" href="src/javascript.svg">
+  </head>
+
+  <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center p-4">
+    <h1 class="text-2xl md:text-3xl font-bold mb-4">
+      Método Gráfico - Programación Lineal
+    </h1>
+
+    <form
+      id="form"
+      class="w-full max-w-2xl bg-gray-800 p-4 rounded-lg shadow-lg space-y-4"
+    >
+      <h2 class="text-lg font-semibold">Función objetivo</h2>
+
+      <div class="flex flex-wrap gap-2 items-center">
+        <label class="flex items-center gap-2">
+          <select id="tipo" class="bg-gray-700 p-2 rounded w-28">
+            <option value="max">Maximizar</option>
+            <option value="min">Minimizar</option>
+          </select>
+        </label>
+
+        <input
+          id="c1"
+          type="number"
+          step="any"
+          placeholder="c1 (x1)"
+          class="bg-gray-700 p-2 rounded w-28"
+        />
+        <input
+          id="c2"
+          type="number"
+          step="any"
+          placeholder="c2 (x2)"
+          class="bg-gray-700 p-2 rounded w-28"
+        />
+
+        <label class="ml-auto flex items-center gap-2">
+          <input id="nonneg" type="checkbox" checked class="w-4 h-4" />
+          <span>Forzar x₁, x₂ ≥ 0</span>
+        </label>
+      </div>
+
+      <h2 class="text-lg font-semibold">Restricciones (ax₁ + bx₂ ≤ c)</h2>
+
+      <div id="restricciones" class="space-y-2">
+        <div class="rrow flex gap-2 items-center">
+          <input
+            type="number"
+            step="any"
+            placeholder="a (x1)"
+            class="bg-gray-700 p-2 rounded w-20 a"
+          />
+          <input
+            type="number"
+            step="any"
+            placeholder="b (x2)"
+            class="bg-gray-700 p-2 rounded w-20 b"
+          />
+          <select class="op bg-gray-700 p-2 rounded">
+            <option value="<=">≤</option>
+            <option value=">=">≥</option>
+            <option value="=">=</option>
+          </select>
+          <input
+            type="number"
+            step="any"
+            placeholder="c"
+            class="bg-gray-700 p-2 rounded w-20 c"
+          />
+          <button type="button" class="remove text-sm px-2 py-1 bg-red-600 rounded">
+            Eliminar
+          </button>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <button id="addRestr" type="button" class="bg-blue-600 px-3 py-1 rounded">
+          + Agregar restricción
+        </button>
+        <button type="submit" class="ml-auto bg-green-600 px-4 py-2 rounded">
+          Resolver
+        </button>
+      </div>
+    </form>
+
+    <div id="grafico" class="w-full max-w-4xl h-[520px] mt-6"></div>
+
+    <div
+      id="resultado"
+      class="w-full max-w-2xl bg-gray-800 p-4 rounded-lg shadow-lg mt-4"
+    ></div>
+
+    <script type="module" src="/src/main.js">
+    </script>
+  </body>
+</html>
